@@ -58,13 +58,14 @@ RSpec.describe Cell do
 
   describe "#render" do
     it "render's the board based off action taken" do
+     require 'pry';binding.pry
       expect(@cell_1.render).to eq "."
 
       @cell_1.fire_upon 
 
       expect(@cell_1.render).to eq "M"
       
-      @cell_2.place_ship(cruiser)
+      @cell_2.place_ship(@cruiser)
 
       expect(@cell_2.render).to eq "."
       expect(@cell_2.render(true)).to eq "S"
