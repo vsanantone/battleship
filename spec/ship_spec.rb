@@ -28,15 +28,20 @@ RSpec.describe Ship do
 
   describe "#hit" do
   it "ship is hit" do
-    require 'pry'; binding.pry
       expect(@cruiser.health).to eq 3
       expect(@cruiser.sunk?).to eq false
+
       @cruiser.hit
+      
       expect(@cruiser.health).to eq 2
+      
       @cruiser.hit
+      
       expect(@cruiser.health).to eq 1
       expect(@cruiser.sunk?).to eq false
+      
       @cruiser.hit
+      
       expect(@cruiser.health).to eq 0
       expect(@cruiser.sunk?).to eq true
     end

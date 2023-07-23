@@ -31,10 +31,27 @@ RSpec.describe Cell do
 
   describe "#place_ship" do
     it "places a ship on the board" do
-      require 'pry';binding.pry
       @cell.place_ship(@cruiser)
 
       expect(@cell.ship).to eq @cruiser
+      expect(@cell.empty?).to eq false
+    end
+  end
+
+  describe "#fire or be fired" do
+    it "tracks whether you have been fired_upon." do
+      expect(@cell.fired_upon?).to eq false
+
+      @cell.fire_upon
+
+      expect(@cell.fired_upon?).to eq true
+    end
+
+    it "you have been fired_upon" do
+      @cell.place_ship(@cruiser)
+      @cell.fire_upon
+      
+      expect(@cell.ship.health).to eq 2
     end
   end
 end
