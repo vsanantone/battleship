@@ -12,4 +12,8 @@ class Board
       @cells[coordinate] = Cell.new(coordinate)
     end
   end
+
+  def validate_coordinate?(coordinate)
+    cells.key?(coordinate)
+  end
 end
