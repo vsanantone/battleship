@@ -36,9 +36,33 @@ RSpec.describe Board do
 
   describe "#valid_placement?" do
     it "determines if a placement for a ship is valid or not" do
-      require 'pry'; binding.pry
       expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to eq false
       expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to eq false
+    end
+  end
+
+  describe "#consecutive_coordinates?" do
+    it "will determine that coordinates are consecutive" do
+      expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to eq false
+      expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to eq false
+      expect(@board.valid_placement?(@cruiser, ["A3", "A2", "A1"])).to eq false
+      expect(@board.valid_placement?(@submarine, ["C1", "B1"])).to eq false
+      expect(@board.valid_placement?(@cruiser, ["A2", "A3", "A4"])).to eq true
+      expect(@board.valid_placement?(@submarine, ["C1", "C2"])).to eq true
+    end
+  end
+
+  describe "#diagonal?" do
+    it "determines if coordinates are listed diagonally" do
+      expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to eq false
+      expect(@board.valid_placement?(@cruiser, ["C2", "D3"])).to eq false
+    end
+  end
+
+  describe "#valid_testing?" do
+    it "determines that ship can be placed in coordinates" do
+      expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to eq true
+      expect(@board.valid_placement?(@submarine, ["B1", "C1", "D1"])).to eq true
     end
   end
 end
