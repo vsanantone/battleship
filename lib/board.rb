@@ -18,17 +18,17 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    return false unless coordinates == ship.length
-    return false unless validate_coordinates?(coordinates)
+    return false unless coordinates.length == ship.length
+    return false unless coordinates.all? { |coordinate| validate_coordinate?(coordinate) } 
     return false unless consecutive_coordinates?(coordinates)
-    return false if diagonal_coordinates?(coordinates)
+    # return false if diagonal_coordinates?(coordinates)
 
     true
   end
 
   def consecutive_coordinates?(coordinates)
-    rows = coordinate.map { |coord| coord(0) }
-    columns = coordinates.map { |coord| coord[1..].to_i }
+    rows = coordinates.map { |coord| coord[0].ord }
+    columns = coordinates.map { |coord| coord[1].to_i }
 
     consecutive_row = rows.uniq.length == 1 && consecutive_numbers?(columns)
     consecutive_column = columns.uniq.length == 1 && consecutive_numbers?(rows)
@@ -37,18 +37,18 @@ class Board
   end
 
   def consecutive_numbers?(numbers)
-    numbers.sort.each_cons(2).all? { |a, b| b == a + 1 }
+    numbers.each_cons(2).all? { |a, b| b == a + 1 }
   end
 
-  def diagonal_coordinates?(coordinates)
-    rows = coordinates.map { |coord| coord[0] }
-    columns = coordinates.map { |coord| coord[1..].to_i }
+  # def diagonal_coordinates?(coordinates)
+  #   rows = coordinates.map { |coord| coord[0] }
+  #   columns = coordinates.map { |coord| coord[1].to_i }
 
-    non_diagonal_rows = rows.uniq.length > 1
-    non_diagonal_columns = columns.uniq.length > 1
+  #   non_diagonal_rows = rows.uniq.length > 1
+  #   non_diagonal_columns = columns.uniq.length > 1
 
-    non_diagonal_rows && non_diagonal_columns
-  end
+  #   non_diagonal_rows && non_diagonal_columns
+  # end
 end
 
 
