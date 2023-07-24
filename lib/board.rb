@@ -20,4 +20,22 @@ class Board
   def valid_placement?(ship, coordinates)
     coordinates == ship.length
   end
+
+  def consecutive_coordinates?(coordinates)
+    rows = coordinate.map { |coord| coord(1..4) }
+    columns = coordinate.map { |coord| coord(1..4) }
+    
+
+    end
+
+  end
 end
+
+
+#Horizontal, Vertical, fit in the grid,
+#if occupied, enough coordinates
+#def empty?(helper method)
+# # of coordinates match the length of the ship, make sure it's not occupied
+#if not valid, it's occupied, off the board
+#consecutive placement- validation must be aware of horizontal or vertical placement.
+#
