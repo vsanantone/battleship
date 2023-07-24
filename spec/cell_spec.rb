@@ -58,7 +58,6 @@ RSpec.describe Cell do
 
   describe "#render" do
     it "render's the board based off action taken" do
-     require 'pry';binding.pry
       expect(@cell_1.render).to eq "."
 
       @cell_1.fire_upon 
