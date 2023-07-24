@@ -16,4 +16,8 @@ class Board
   def validate_coordinate?(coordinate)
     cells.key?(coordinate)
   end
+
+  def valid_placement?(ship, coordinates)
+    coordinates == ship.length
+  end
 end
