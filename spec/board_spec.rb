@@ -50,6 +50,13 @@ RSpec.describe Board do
     end
   end
 
+  describe "#diagonal_coordinates?" do
+    it "determine if coordinates are diagonal" do
+      expect(@board.diagonal_coordinates?(["A1", "B2", "C3"])).to eq true
+      expect(@board.diagonal_coordinates?(["A1", "A2", "A3"])).to eq false
+    end
+  end
+
   describe "#valid_placement?" do
     it "determines if a placement for a ship is valid or not" do
 

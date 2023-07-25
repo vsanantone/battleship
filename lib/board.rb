@@ -2,7 +2,6 @@ class Board
   attr_reader :cells
 
   def initialize
-
     @cells = {}
     generate_cells
   end
@@ -22,7 +21,7 @@ class Board
     return false unless coordinates.length == ship.length
     return false unless coordinates.all? { |coordinate| validate_coordinate?(coordinate) } 
     return false unless consecutive_coordinates?(coordinates)
-    # return false if diagonal_coordinates?(coordinates)
+    return false if diagonal_coordinates?(coordinates)
 
     true
   end
@@ -41,30 +40,20 @@ class Board
     numbers.each_cons(2).all? { |a, b| b == a + 1 }
   end
 
+  def diagonal_coordinates?(coordinates)
+    rows = coordinates.map { |coord| coord[0] }
+    columns = coordinates.map { |coord| coord[1].to_i }
+
+    non_diagonal_rows = rows.uniq.length > 1
+    non_diagonal_columns = columns.uniq.length > 1
+
+    non_diagonal_rows && non_diagonal_columns
+  end
+
   def place(ship, coordinates)
     coordinates.each do |coordinate|
       @cells[coordinate].place_ship(ship)
+      # coordinates.each { |coordinate| @cells[coordinate].place_ship(ship)}
     end
-  # coordinates.each { |coordinate| @cells[coordinate].place_ship(ship)}
   end
-  # def diagonal_coordinates?(coordinates)
-  #   rows = coordinates.map { |coord| coord[0] }
-  #   columns = coordinates.map { |coord| coord[1].to_i }
-
-  #   non_diagonal_rows = rows.uniq.length > 1
-  #   non_diagonal_columns = columns.uniq.length > 1
-
-  #   non_diagonal_rows && non_diagonal_columns
-  # end
 end
-
-
-
-
-#Horizontal, Vertical, fit in the grid,
-#if occupied, enough coordinates
-#def empty?(helper method)
-# # of coordinates match the length of the ship, make sure it's not occupied
-#if not valid, it's occupied, off the board
-#consecutive placement- validation must be aware of horizontal or vertical placement.
-#
