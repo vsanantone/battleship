@@ -56,4 +56,8 @@ class Board
       # coordinates.each { |coordinate| @cells[coordinate].place_ship(ship)}
     end
   end
+
+  def overlapping_ships?(coordinates)
+    coordinates.any? { |coordinate| cells[coordinate].ship }
+  end
 end
