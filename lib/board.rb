@@ -2,6 +2,7 @@ class Board
   attr_reader :cells
 
   def initialize
+
     @cells = {}
     generate_cells
   end
@@ -40,6 +41,12 @@ class Board
     numbers.each_cons(2).all? { |a, b| b == a + 1 }
   end
 
+  def place(ship, coordinates)
+    coordinates.each do |coordinate|
+      @cells[coordinate].place_ship(ship)
+    end
+  # coordinates.each { |coordinate| @cells[coordinate].place_ship(ship)}
+  end
   # def diagonal_coordinates?(coordinates)
   #   rows = coordinates.map { |coord| coord[0] }
   #   columns = coordinates.map { |coord| coord[1].to_i }
