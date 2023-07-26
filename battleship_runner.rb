@@ -5,4 +5,6 @@ require './lib/game'
 
 game1 = Game.new
 
-game1.intro
+game1.start_game
+
+
