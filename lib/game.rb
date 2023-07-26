@@ -1,7 +1,9 @@
 class Game
   def intro
-    puts "Welcome to BATTLESHIP!"
-    puts "Enter p to play. Enter q to quit."
+    welcome = "Welcome to BATTLESHIP!"
+    play = "Enter p to play. Enter q to quit."
+    puts "#{welcome}\n#{play}" 
+    return "#{welcome}\n#{play}" 
   end
 end
 

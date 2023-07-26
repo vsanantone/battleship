@@ -11,6 +11,8 @@ RSpec.describe Game do
   describe "#intro" do
     it "prints welcome message" do
       @game.intro
+
+      expect(@game.intro).to be_a String
     end
   end
 end
