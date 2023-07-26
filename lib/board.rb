@@ -61,4 +61,14 @@ class Board
   def overlapping_ships?(coordinates)
     coordinates.any? { |coordinate| cells[coordinate].ship }
   end
+
+  def render(expose_ship = false)
+    header = "  1 2 3 4 \n"
+    rows = ("A".."D").map do |row|
+      cells_in_row = (1..4).map { |column| cells["#{row}#{column}"].render(expose_ship) }
+      "#{row} #{cells_in_row.join(" ")} \n"
+    end
+
+    header + rows.join("")
+  end
 end
