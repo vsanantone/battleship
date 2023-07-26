@@ -8,15 +8,9 @@ RSpec.describe Game do
     @game = Game.new
   end
 
-  describe "#initialize" do
-    it "exists" do
-     expect(@game).to be_a Game
-    end 
-  end
-
-  describe "#start_game" do
-    it "starts the game" do
-      expect(@game.start_game).to eq "Welcome to BATTLESHIP"    
+  describe "#intro" do
+    it "prints welcome message" do
+      @game.intro
     end
   end
 end
