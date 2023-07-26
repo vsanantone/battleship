@@ -10,13 +10,13 @@ RSpec.describe Cell do
 
   describe "#initialize" do
     it "exists" do
-     expect(@cell_1).to be_a Cell
+      expect(@cell_1).to be_a Cell
     end 
   end
 
   describe "#readable attributes" do
     it "has a coordinate" do
-     expect(@cell_1.coordinate).to eq "B4"
+      expect(@cell_1.coordinate).to eq "B4"
     end 
 
     it "has a ship" do
