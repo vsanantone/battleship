@@ -54,7 +54,6 @@ class Board
   def place(ship, coordinates)
     coordinates.each do |coordinate|
       @cells[coordinate].place_ship(ship)
-      # coordinates.each { |coordinate| @cells[coordinate].place_ship(ship)}
     end
   end
 

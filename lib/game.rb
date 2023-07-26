@@ -1,12 +1,7 @@
 class Game
-  attr_reader :start_game
-
-  def initialize
-    @start_game =  "Welcome to BATTLESHIP"
-  end
-
   def intro
-   puts @start_game
+    puts "Welcome to BATTLESHIP!"
+    puts "Enter p to play. Enter q to quit."
   end
 end
 
